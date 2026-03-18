@@ -80,8 +80,8 @@ round_001/
 
 ## Operating Flow
 
-1. Human creates the round context.
-2. Human or lead prepares previous-round feedback when applicable.
+1. Lead creates the round context with human guidance.
+2. Lead prepares previous-round feedback when applicable, with human guidance.
 3. Reviewers read prior feedback and write findings files.
 4. Lead writes assessment.
 5. Human resolves disputed or uncertain items with the lead.

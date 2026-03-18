@@ -2,7 +2,7 @@
 
 `extreme-cr-rig` is a lead-agent-centric orchestration system for reviewing large or high-risk code changes.
 
-It is built for the point where agent-assisted implementation has already accelerated delivery, but review quality has become the next bottleneck.
+It is designed for the point where agent-assisted implementation has already increased delivery speed, but review quality has become the next bottleneck.
 
 ## What It Solves
 
@@ -15,28 +15,40 @@ Large pull requests and high-risk changes are difficult to review well with:
 The rig addresses that problem by combining:
 
 - independent reviewer agents
-- one strong lead agent
+- one lead agent as the synthesis center
 - a human supervisor with final authority
 - iterative review, fix, and verification loops
 
 ## Initial Release
 
-The initial release is intentionally simple.
+The current release is the manual/reference rig over the filesystem.
 
-It formalizes the already-proven manual operating model and ships with:
+It includes:
 
-- a defined review protocol
-- a defined communication model
-- a file-system-based reference transport
-- a reference round template for running the rig manually
-
-This release is protocol-first, not tooling-first.
+- a defined [review protocol](docs/review-protocol.md)
+- a defined [review standard](docs/review-standard.md)
+- a defined [communication model](docs/communication-model.md)
+- a defined [filesystem reference transport](docs/filesystem-reference-transport.md)
+- role-specific operator entrypoints for the filesystem transport
+- a round template for running the rig manually
 
 ## Core Roles
 
-- **Human**: chooses reviewer count, owns disputed findings, defines merge criteria, decides when the loop ends
-- **Lead agent**: ingests reviewer outputs, evaluates them, synthesizes them, batches fixes, and coordinates the next step
-- **Review agents**: perform independent review and emit findings in a shared format
+- **Human**
+  - chooses reviewer count
+  - owns disputed findings
+  - defines merge criteria
+  - decides when the loop ends
+
+- **Lead agent**
+  - ingests reviewer outputs
+  - evaluates and synthesizes findings
+  - batches fixes
+  - coordinates the next step
+
+- **Review agents**
+  - perform independent review
+  - emit findings in the shared review format
 
 ## Design Principles
 
@@ -47,14 +59,24 @@ This release is protocol-first, not tooling-first.
 - support heterogeneous reviewer models
 - optimize for reviewability, not just review volume
 
-## Included Docs
+## How To Start
+
+For the current release:
+
+1. start with the [filesystem runbook](reference/filesystem/START_HERE.md)
+2. choose your role-specific init file
+3. run the round from the provided template
+
+## Public Docs
 
 - [Review Protocol](docs/review-protocol.md)
 - [Review Standard](docs/review-standard.md)
 - [Communication Model](docs/communication-model.md)
 - [Filesystem Reference Transport](docs/filesystem-reference-transport.md)
+- [Filesystem Directory Guide](reference/filesystem/README.md)
 - [Filesystem Runbook](reference/filesystem/START_HERE.md)
-- [Filesystem Reference Template](reference/filesystem/README.md)
+- [Lead Rig Init](reference/filesystem/LEAD_RIG_INIT.md)
+- [Reviewer Rig Init](reference/filesystem/REVIEWER_RIG_INIT.md)
 
 ## What This Is Not
 
@@ -63,6 +85,7 @@ This release is protocol-first, not tooling-first.
 - not an autonomous merge pipeline
 - not a replacement for human review authority
 
-## Current Release
+## Next Direction
 
-The current release is the manual/reference rig over the filesystem.
+After the manual/reference rig is validated, the next intended step is a CLI-based transport/orchestration layer built on top of the same protocol.
+
