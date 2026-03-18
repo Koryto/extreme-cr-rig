@@ -58,6 +58,7 @@ The communication layer must allow:
 
 - round start with shared context
 - reviewer submission of findings
+- reviewer access to prior lead feedback between rounds
 - lead publication of assessment and unified findings
 - human approval or dispute of synthesized outcomes
 - batch-by-batch fix and verification updates
@@ -76,9 +77,6 @@ Those are transport decisions, not protocol decisions.
 
 The protocol only requires that artifacts can move between actors in a structured way.
 
-## Initial Release Position
+## Current Release Position
 
-The initial release uses a file-system-based reference transport.
-
-That transport is the first supported implementation of the communication model, not the model itself.
-
+The current release uses the file-system reference transport.

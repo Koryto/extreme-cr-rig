@@ -52,6 +52,7 @@ This release is protocol-first, not tooling-first.
 - [Review Protocol](docs/review-protocol.md)
 - [Communication Model](docs/communication-model.md)
 - [Filesystem Reference Transport](docs/filesystem-reference-transport.md)
+- [Filesystem Runbook](reference/filesystem/START_HERE.md)
 - [Filesystem Reference Template](reference/filesystem/README.md)
 
 ## What This Is Not
@@ -61,8 +62,6 @@ This release is protocol-first, not tooling-first.
 - not an autonomous merge pipeline
 - not a replacement for human review authority
 
-## Roadmap Direction
+## Current Release
 
-- initial release: manual/reference rig over the filesystem
-- next release: CLI-based transport/orchestration layer
-- later: richer transport adapters and workflow ergonomics
+The current release is the manual/reference rig over the filesystem.

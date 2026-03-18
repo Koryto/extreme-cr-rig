@@ -41,6 +41,14 @@ The human starts a round and provides the required context.
 
 Each review agent performs an independent review and emits findings in the shared format.
 
+Before reviewing a new round, each reviewer should read the previous round's lead assessment, unified findings, and verdict when they exist.
+
+The reviewer is expected to:
+
+- check whether prior concerns were resolved
+- avoid repeating rejected findings without new evidence
+- explicitly track the status of earlier findings they raised
+
 ### 3. Lead Assessment
 
 The lead agent ingests reviewer outputs and evaluates each finding as:
@@ -118,10 +126,11 @@ At minimum the standard must cover:
 - the human owns disputed findings and final exit criteria
 - one round should produce one unified finding list
 - fixes should be batched, not collapsed into one giant remediation pass
+- reviewers should consume prior round feedback before starting another round
+- repeated findings should be justified as still-open or newly evidenced, not restated blindly
 
 ## Non-Goals
 
 - enforcing one specific transport
 - forcing one specific model vendor
 - replacing human approval
-

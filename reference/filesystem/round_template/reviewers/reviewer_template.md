@@ -5,6 +5,13 @@
 - name:
 - model:
 
+## Follow-Up On Prior Findings
+
+- resolved:
+- still_open:
+- deferred_with_acceptable_reason:
+- deferred_but_unsatisfactory:
+
 ## Findings
 
 1. Severity - Title
@@ -17,4 +24,3 @@
 If there are no findings, state explicitly:
 
 `No findings.`
-

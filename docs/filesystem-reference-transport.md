@@ -27,6 +27,7 @@ Recommended structure:
 ```text
 round_001/
 |-- 00_round_context.md
+|-- 10_previous_round_feedback.md
 |-- reviewers/
 |   |-- reviewer_alpha.md
 |   |-- reviewer_beta.md
@@ -50,8 +51,15 @@ round_001/
   - merge criteria
   - reviewer roster
 
+- `10_previous_round_feedback.md`
+  - summary of prior round outcomes relevant to this round
+  - prior lead assessment references
+  - prior unified finding references
+  - prior verdict references
+
 - `reviewers/reviewer_<name>.md`
   - one reviewer's findings in the shared format
+  - includes follow-up on that reviewer's prior findings when applicable
 
 - `lead/20_assessment.md`
   - lead classification of each reviewer finding
@@ -73,13 +81,14 @@ round_001/
 ## Operating Flow
 
 1. Human creates the round context.
-2. Reviewers write findings files.
-3. Lead writes assessment.
-4. Human resolves disputed or uncertain items with the lead.
-5. Lead writes the unified findings and fix batches.
-6. Fixes are applied and verified batch by batch.
-7. Lead writes the round verdict.
-8. Human decides whether to stop or start another round.
+2. Human or lead prepares previous-round feedback when applicable.
+3. Reviewers read prior feedback and write findings files.
+4. Lead writes assessment.
+5. Human resolves disputed or uncertain items with the lead.
+6. Lead writes the unified findings and fix batches.
+7. Fixes are applied and verified batch by batch.
+8. Lead writes the round verdict.
+9. Human decides whether to stop or start another round.
 
 ## Transport Rules
 
@@ -88,8 +97,4 @@ round_001/
 - the lead output becomes the authoritative round state
 - verification must be written down, not assumed
 - completed rounds should remain readable for later reference
-
-## Future Direction
-
-Later transports may improve usability, but they should preserve the same artifact model and round semantics.
-
+- reviewers should have explicit access to prior round feedback before starting the next round
