@@ -10,6 +10,15 @@ Use this file if you are the lead agent for a filesystem-based review round.
 4. `10_previous_round_feedback.md` when it is relevant
 5. all reviewer files under `reviewers/`
 
+## Rig Setup
+
+Set up the rig workspace with human guidance:
+
+1. copy `round_template/` into a new round directory
+2. fill `00_round_context.md`
+3. fill `10_previous_round_feedback.md` when this is not the first round
+4. confirm reviewer roster and merge criteria with the human
+
 ## Responsibilities
 
 You are responsible for:
@@ -46,5 +55,5 @@ Engage the human when:
 4. Publish unified findings.
 5. Publish fix batches.
 6. After each batch, review verification results.
-7. Close the round with a verdict or prepare the next round.
-
+7. If another round is needed, prepare the next round's carry-forward feedback with human guidance.
+8. Close the round with a verdict or prepare the next round.
