@@ -50,6 +50,7 @@ This release is protocol-first, not tooling-first.
 ## Included Docs
 
 - [Review Protocol](docs/review-protocol.md)
+- [Review Standard](docs/review-standard.md)
 - [Communication Model](docs/communication-model.md)
 - [Filesystem Reference Transport](docs/filesystem-reference-transport.md)
 - [Filesystem Runbook](reference/filesystem/START_HERE.md)

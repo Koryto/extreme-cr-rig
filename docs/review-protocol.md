@@ -107,17 +107,7 @@ The human decides whether:
 
 ## Review Standard
 
-All reviewer agents must use a shared review standard so outputs are comparable.
-
-At minimum the standard must cover:
-
-- correctness and regressions
-- scale
-- industry standards and best practices
-- extendability and maintainability
-- production-grade rigor
-- architecture and ownership
-- verification and documentation gaps
+All reviewer agents and the lead agent must use the shared review standard defined in `review-standard.md`.
 
 ## Protocol Rules
 
