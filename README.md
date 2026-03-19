@@ -48,7 +48,7 @@ It includes:
 
 - **Review agents**
   - perform independent review
-  - emit findings in the shared review format
+  - emit findings using the [review standard](docs/review-standard.md)
 
 ## Design Principles
 
@@ -87,5 +87,7 @@ For the current release:
 
 ## Next Direction
 
-After the manual/reference rig is validated, the next intended step is a CLI-based transport/orchestration layer built on top of the same protocol.
+The current standalone focus is markdown hardening of the protocol, role init docs, and filesystem artifact model.
+
+Longer term, the operator layer should likely be introduced through `dotagent` as part of the future playbook merge rather than as a repo-specific standalone CLI here.
 

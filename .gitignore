@@ -1,4 +1,5 @@
 .agent/
+.ecrr/
 
 .idea/
 .vscode/

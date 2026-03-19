@@ -4,11 +4,20 @@
 
 - name:
 - model:
+- role:
+- suffix:
+
+## Review Basis
+
+- reviewed_state:
+- live_files_verified: yes/no
+- notes:
 
 ## Follow-Up On Prior Findings
 
 - resolved:
 - still_open:
+- rejected_or_stale_not_repeated:
 - deferred_with_acceptable_reason:
 - deferred_but_unsatisfactory:
 
@@ -24,3 +33,5 @@
 If there are no findings, state explicitly:
 
 `No findings.`
+
+If there are no findings, remain in lightweight follow-up mode unless removed by the human.
