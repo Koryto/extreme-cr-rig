@@ -7,12 +7,13 @@
 
 ## Verification Performed
 
-- check_1:
-- check_2:
+- build_compile:
+- tests:
+- manual_validation:
+- regressions_checked:
 
 ## Result
 
-- pass_fail:
+- result:
 - regressions_found:
 - notes:
-

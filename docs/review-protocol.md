@@ -1,5 +1,5 @@
 # Review Protocol
-<!-- VERSION: 1.0 | STATUS: initial release -->
+<!-- VERSION: 1.1 | STATUS: hardened draft -->
 
 ## Purpose
 
@@ -13,67 +13,127 @@ This protocol is the engine of `extreme-cr-rig`.
 - Lead agent
 - Review agents
 
-## Default Mode
+## Review Modes
 
-Default mode is independent full review.
+### Standard Round
 
-Review agents review the same change independently and emit findings using the same review standard.
+Standard rounds are the default.
 
-Specialized reviewer assignments are optional and human-directed, not required by the protocol.
+Use them when the review still has meaningful finding volume or structural uncertainty.
+
+### Quick Round
+
+Quick rounds are allowed when the branch is already near merge and only low-signal follow-up remains.
+
+Typical quick-round cases:
+
+- no-findings confirmation
+- doc-only cleanup
+- one low-severity issue
+
+Quick rounds should reduce ceremony, not remove rigor.
 
 ## Inputs
 
 Each review round should start with:
 
-- the change under review
+- exact review scope
+- exact reviewed state
 - relevant project rules and constraints
 - relevant design or system context
-- merge criteria defined by the human
-- reviewer count chosen by the human
+- expected reviewer roster
+- human-owned merge criteria when relevant
+- explicit out-of-scope items when relevant
+
+Reviewers must verify the current file state before writing findings.
+
+Diff-only review is not sufficient on its own.
+
+## Required Round Artifacts
+
+Every round must have:
+
+- `00_round_context.md`
+- `reviewers/`
+- `60_round_verdict.md`
+
+Every non-initial round must also have:
+
+- `10_previous_round_feedback.md`
+
+Standard rounds should produce:
+
+- `lead/20_reviewer_feedback.md`
+- `lead/30_round_results.md`
+
+Quick rounds may skip `lead/20_reviewer_feedback.md` when there is no meaningful carry-forward value for another round.
+
+Verification artifacts are expected whenever fix batches or manual validation occur.
 
 ## Round Phases
 
 ### 1. Round Start
 
-The human starts a round and provides the required context.
+The lead creates the round and populates required context with human guidance.
+
+Reviewers should not begin until the round has:
+
+- populated scope
+- reviewed-state information
+- reviewer roster
+- non-initial carry-forward when applicable
 
 ### 2. Independent Review
 
-Each review agent performs an independent review and emits findings in the shared format.
+Each review agent performs an independent review and emits findings using `review-standard.md`.
 
-Before reviewing a new round, each reviewer should read the previous round's lead assessment, unified findings, and verdict when they exist.
+Before reviewing a new round, each reviewer should read the previous round carry-forward artifacts when they exist.
 
 The reviewer is expected to:
 
+- verify the live file state before writing findings
 - check whether prior concerns were resolved
 - avoid repeating rejected findings without new evidence
 - explicitly track the status of earlier findings they raised
+- remain in the rig even after reaching `No findings.`
 
-### 3. Lead Assessment
+When a reviewer has no more findings, that reviewer enters lightweight follow-up mode:
 
-The lead agent ingests reviewer outputs and evaluates each finding as:
+- validate prior concerns were fixed or deferred correctly
+- watch for regressions introduced by fix batches
+- avoid re-running a heavy cold review unless asked
 
-- `valid`
+### 3. Lead Pass
+
+The lead agent ingests reviewer outputs and performs one internal synthesis pass.
+
+Reviewer-facing classifications should use:
+
+- `accepted`
 - `duplicate`
-- `uncertain`
+- `stale`
 - `rejected`
+- `deferred`
+- `non-actionable`
 
-### 4. Human Adjudication
+The lead should then produce:
 
-The human reviews:
+- one reviewer-facing artifact
+- one human-facing round-results artifact
 
-- the synthesized finding set
-- any disputed or uncertain items
+### 4. Human Review
 
-### 5. Unified Findings
+The human reviews the human-facing round-results artifact, not every internal lead substep.
 
-The lead agent produces one unified finding list.
+The human interaction point here is:
 
-This is the authoritative review output for the round.
+- approve the round results and execution plan
+- reject it and request another lead pass
+- override any disputed lead judgment
 
-### 6. Fix Batching
+### 5. Fix And Verification
 
-The lead agent groups accepted findings into fix batches.
+Accepted work is implemented and verified.
 
 Each batch should be small enough to:
 
@@ -81,15 +141,7 @@ Each batch should be small enough to:
 - verify meaningfully
 - isolate regressions when they appear
 
-### 7. Batch Verification
-
-After each fix batch:
-
-- changes are verified
-- regressions are checked
-- the next batch proceeds only after the current batch is accepted
-
-### 8. Re-Review
+### 6. Re-Review
 
 After all batches are complete, review is re-run on:
 
@@ -97,30 +149,45 @@ After all batches are complete, review is re-run on:
 - impacted hotspots
 - unresolved findings
 
-### 9. Human Verdict
+Quick rounds may collapse this into a lighter closeout pass when only tiny follow-up work remains.
 
-The human decides whether:
+### 7. Human Verdict
 
-- the loop is complete
-- another round is required
-- merge criteria have been met
+Every finished round is closed.
+
+The actual human decision is only:
+
+- `merge`
+- `another_round`
+
+The verdict file should record:
+
+- that the round is closed
+- the human verdict
+- remaining risks
+- next action
 
 ## Review Standard
 
-All reviewer agents and the lead agent must use the shared review standard defined in `review-standard.md`.
+All reviewer agents and the lead agent must use `review-standard.md`.
 
 ## Protocol Rules
 
 - the lead agent is the only synthesis authority
 - review agents are signal producers, not coordinators
-- the human owns disputed findings and final exit criteria
-- one round should produce one unified finding list
+- the human owns disputed findings, merge criteria, and the final `merge` / `another_round` judgment
 - fixes should be batched, not collapsed into one giant remediation pass
-- reviewers should consume prior round feedback before starting another round
+- reviewers must consume prior round feedback before starting another round
 - repeated findings should be justified as still-open or newly evidenced, not restated blindly
+- non-initial rounds should not start without carry-forward artifacts
+- a missing reviewer submission must be made explicit by the lead before the round proceeds
+- a round may proceed with partial reviewer submissions only if the lead records that fact and the human accepts it
+- verification should be written into artifacts, not left only in chat
 
 ## Non-Goals
 
 - enforcing one specific transport
 - forcing one specific model vendor
 - replacing human approval
+
+## AND IT. IS. ON.

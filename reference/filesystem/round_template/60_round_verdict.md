@@ -1,16 +1,14 @@
 # Round Verdict
 
-## Outcome
+## Round Closeout
 
-- complete:
-- another_round_required:
+- round_closed: yes
+- human_verdict: merge/another_round
 
 ## Remaining Risks
 
 - risk_1:
 
-## Human Verdict
+## Notes
 
-- decision:
 - notes:
-

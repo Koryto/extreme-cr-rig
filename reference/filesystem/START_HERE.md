@@ -1,15 +1,28 @@
 # Start Here
 
-This file is the entrypoint for the filesystem-based initial release.
+Filesystem entrypoint for a live rig run.
 
-Choose your role:
+## Role Split
 
 - if you are the lead agent, read `LEAD_RIG_INIT.md`
 - if you are a reviewer agent, read `REVIEWER_RIG_INIT.md`
 
-The lead agent should set up the round workspace with human guidance:
+## Lead Setup Checklist
 
-1. copy `round_template/` into a working round directory such as `round_001/`
-2. fill `00_round_context.md`
-3. fill `10_previous_round_feedback.md` when this is not the first round
-4. assign one lead agent and one or more reviewers
+The lead should perform these steps with human guidance before any reviewer starts:
+
+1. Create the next round under the target repo:
+   - `<repo>/.ecrr/<task_name>/round_00X/`
+2. Copy every file and folder from:
+   - `reference/filesystem/round_template/`
+3. Fill:
+   - `00_round_context.md`
+4. If this is not the first round, fill:
+   - `10_previous_round_feedback.md`
+5. Confirm:
+   - reviewer roster
+   - reviewer file suffixes
+   - round mode (`standard` or `quick`)
+6. Tell reviewers which round directory they should use.
+
+If those steps are not done, the round is not ready.
