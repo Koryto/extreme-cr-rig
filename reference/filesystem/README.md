@@ -16,6 +16,7 @@ reference/filesystem/
 |-- LEAD_RIG_INIT.md
 |-- REVIEWER_RIG_INIT.md
 `-- round_template/
+    `-- README.md
 ```
 
 ## Purpose
